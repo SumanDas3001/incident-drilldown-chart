@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, HostListener, OnInit, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ChartDataService } from '../chart-data.service'; // Import service
@@ -25,6 +25,13 @@ export class DashboardComponent implements OnInit {
   previousLevels: string[] = [];
   dataLevels: Record<string, DrillDownLevel> = {}; // Stores hierarchical data
   chartData: any[] = []; // Stores data for ngx-charts
+
+  view: [number, number] = [window.innerWidth * 0.8, 400];
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.view = [event.target.innerWidth * 0.8, 400];
+  }
 
   ngOnInit() {
     this.fetchData();
