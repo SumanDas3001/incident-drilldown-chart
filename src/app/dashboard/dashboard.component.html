@@ -1,21 +1,29 @@
-<div class="chart-container">
-  <ngx-charts-bar-vertical
-    [view]="view"
-    [results]="chartData"
-    [xAxis]="true"
-    [yAxis]="true"
-    [legend]="false"
-    [showXAxisLabel]="true"
-    [showYAxisLabel]="true"
-    [xAxisLabel]="'Category'"
-    [yAxisLabel]="'Value'"
-    [showGridLines]="false"
-    [gradient]="false"
-    [animations]="true"
-    (select)="onChartClick($event)"
-  ></ngx-charts-bar-vertical>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="chart-container">
+        <div class="chart-container">
+          <ngx-charts-bar-vertical
+            [view]="view"
+            [results]="chartData"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="false"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            [xAxisLabel]="'Category'"
+            [yAxisLabel]="'Value'"
+            [showGridLines]="false"
+            [gradient]="false"
+            [animations]="true"
+            (select)="onChartClick($event)"
+          ></ngx-charts-bar-vertical>
 
-  <button *ngIf="previousLevels.length > 0" (click)="goBack()" class="btn btn-primary">
-    Go Back
-  </button>
+          <button *ngIf="previousLevels.length > 0" (click)="goBack()" class="btn btn-primary">
+            Go Back
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

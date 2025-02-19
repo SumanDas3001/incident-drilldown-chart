@@ -25,16 +25,21 @@ export class DashboardComponent implements OnInit {
   previousLevels: string[] = [];
   dataLevels: Record<string, DrillDownLevel> = {}; // Stores hierarchical data
   chartData: any[] = []; // Stores data for ngx-charts
-
-  view: [number, number] = [window.innerWidth * 0.8, 400];
+  view: [number, number] = [0, 250]; // Default chart size
 
   @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.view = [event.target.innerWidth * 0.8, 400];
+  onResize() {
+    this.updateChartSize();
   }
 
   ngOnInit() {
+    this.updateChartSize(); // Initialize chart size
     this.fetchData();
+  }
+
+  updateChartSize() {
+    const containerWidth = document.querySelector('.chart-container')?.clientWidth || 250;
+    this.view = [containerWidth, 250]; // Ensures it fits inside col-md-3
   }
 
   fetchData() {
