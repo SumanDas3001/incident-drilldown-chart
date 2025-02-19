@@ -1,28 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <div class="chart-container">
-        <div class="chart-container">
-          <ngx-charts-bar-vertical
-            [view]="view"
-            [results]="chartData"
-            [xAxis]="true"
-            [yAxis]="true"
-            [legend]="false"
-            [showXAxisLabel]="true"
-            [showYAxisLabel]="true"
-            [xAxisLabel]="'Category'"
-            [yAxisLabel]="'Value'"
-            [showGridLines]="false"
-            [gradient]="false"
-            [animations]="true"
-            (select)="onChartClick($event)"
-          ></ngx-charts-bar-vertical>
+    <div class="col-lg-3 col-md-3 col-sm-3">
+      <div class="chart-container position-relative text-center">
 
-          <button *ngIf="previousLevels.length > 0" (click)="goBack()" class="btn btn-primary">
-            Go Back
-          </button>
-        </div>
+        <!-- Go Back Button (Centered Above the Chart) -->
+        <button *ngIf="previousLevels.length > 0" (click)="goBack()" class="btn btn-primary back-button">
+          ← Go Back
+        </button>
+
+        <ngx-charts-bar-vertical
+          [view]="view"
+          [results]="chartData"
+          [xAxis]="true"
+          [yAxis]="true"
+          [legend]="false"
+          [showXAxisLabel]="true"
+          [showYAxisLabel]="false"
+          [xAxisLabel]="selectedTeam"
+          [yAxisLabel]="'Value'"
+          [showGridLines]="false"
+          [gradient]="false"
+          [animations]="true"
+          (select)="onChartClick($event)"
+        ></ngx-charts-bar-vertical>
+
       </div>
     </div>
   </div>

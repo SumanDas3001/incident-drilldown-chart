@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
   dataLevels: Record<string, DrillDownLevel> = {}; // Stores hierarchical data
   chartData: any[] = []; // Stores data for ngx-charts
   view: [number, number] = [0, 250]; // Default chart size
+  selectedTeam: string = ''; // Stores selected team name
 
   @HostListener('window:resize', ['$event'])
   onResize() {
@@ -65,6 +66,7 @@ export class DashboardComponent implements OnInit {
     if (nextLevel) {
       this.previousLevels.push(this.currentLevel);
       this.currentLevel = nextLevel;
+      this.selectedTeam = clickedLabel; // Update selected team name
       this.updateChartData();
     } else {
       this.router.navigate(['/incident-details'], { queryParams: { incident: clickedLabel } });
@@ -74,6 +76,7 @@ export class DashboardComponent implements OnInit {
   goBack() {
     if (this.previousLevels.length > 0) {
       this.currentLevel = this.previousLevels.pop()!;
+      this.selectedTeam = this.previousLevels.length > 0 ? this.previousLevels[this.previousLevels.length - 1] : ''; // Reset team name
       this.updateChartData();
     }
   }
