@@ -1,13 +1,20 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+type DrillDownLevel = {
+  labels: string[];
+  data: number[];
+  nextLevel?: Record<string, string>;
+};
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [CommonModule, RouterModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'chartJs-ChartNavigator';
+
 }

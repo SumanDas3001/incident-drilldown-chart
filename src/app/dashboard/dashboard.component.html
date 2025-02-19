@@ -1,0 +1,20 @@
+<div class="chart-container">
+  <ngx-charts-bar-vertical
+    [results]="chartData"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="false"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxisLabel]="'Category'"
+    [yAxisLabel]="'Value'"
+    [showGridLines]="false"
+    [gradient]="false"
+    [animations]="true"
+    (select)="onChartClick($event)"
+  ></ngx-charts-bar-vertical>
+
+  <button *ngIf="previousLevels.length > 0" (click)="goBack()" class="btn btn-primary">
+    Go Back
+  </button>
+</div>
